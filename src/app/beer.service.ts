@@ -12,6 +12,16 @@ export interface popular_bar{
   bar: string;
 }
 
+export interface top_drinkers{
+  c: number;
+  drinker: string;
+}
+
+export interface time_distribution{
+  time: string;
+  count: string;
+}
+
 @Injectable({
   providedIn: 'root'
 })
@@ -34,6 +44,16 @@ export class BeerService {
   getPopularBar(beer: string)
   {
     return this.http.get<popular_bar[]>('api/popular_bar_for_beer/' + beer);
+  }
+
+  getBeerTimeDistribution(beer: string)
+  {
+    return this.http.get<time_distribution[]>('api/time_distribution_for_beer/' + beer);
+  }
+
+  getTopDrinkerForBeer(beer: string)
+  {
+    return this.http.get<top_drinkers[]>('api/top_drinker_for_beer/' + beer);
   }
 
 }
