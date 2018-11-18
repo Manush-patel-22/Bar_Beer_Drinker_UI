@@ -1,0 +1,37 @@
+<div class="jumbotron jumbotron-fluid">
+  <div class="container">
+    <h1 class="display-4">Welcome to the Drinker Page. </h1>
+    <p class="lead"></p>
+  </div>
+</div><br>
+<form #f="ngForm" (ngSubmit)="onSubmit()" novalidate="" action="#">
+  <div class="form-row">
+    <div class="form-group col-md-6">
+      <input type="text" name="drinkername" [(ngModel)]="model.name" class="form-control" id="inputEmail4" placeholder="drinker Name">
+    </div>
+  </div>
+</form>
+<div class="container">
+  <p-table [value]="drinkers">
+    <ng-template pTemplate="header">
+        <tr>
+          <th>Name</th>
+          <th>Address</th>
+          <th>City</th>
+          <th>Phone</th>
+        </tr>
+    </ng-template>
+    <ng-template pTemplate="body" let-drinker>
+        <tr>
+          <td>
+            <a routerLink="/drinkers/{{ drinker.name }}">
+              {{ drinker.name }}
+            </a>
+          </td>
+          <td>{{ drinker.addr }}</td>
+          <td>{{ drinker.city }}</td>
+          <td>{{ drinker.phone }}</td>
+        </tr>
+    </ng-template>
+  </p-table>
+</div>

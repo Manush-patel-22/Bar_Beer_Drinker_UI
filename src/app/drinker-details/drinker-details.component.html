@@ -1,0 +1,49 @@
+<div class="jumbotron jumbotron-fluid">
+    <div class="container">
+        <h1 class="display-4">{{ drinkerName }}</h1>
+        <p class="lead"></p>
+    </div>
+</div>
+
+<div class="container">
+    <p-table [value]="drinkersData">
+        <ng-template pTemplate="header">
+            <tr>
+                <th>ID</th>
+                <th>Bar</th>
+                <th>Total Amount</th>
+                <th>Date</th>
+                <th>Time</th>
+            </tr>
+        </ng-template>
+        <ng-template pTemplate="body" let-drinkerData>
+            <tr>
+                <td>{{ drinkerData.ID }}</td>
+                <td>{{ drinkerData.bar }}</td>
+                <td>{{ drinkerData.totalAmount }}</td>
+                <td>{{ drinkerData.trans_date }}</td>
+                <td>{{ drinkerData.trans_time }}</td>
+            </tr>
+        </ng-template>
+    </p-table>
+</div>
+
+<br><br>
+
+<div class="container">
+    <br>
+    <div id="bargraph"> </div>
+</div>
+<br><br>
+
+<div class="container">
+    <br>
+    <div id="bargraph1"> </div>
+</div>
+<br><br>
+
+<div class="container">
+    <br>
+    <div id="bargraph2"> </div>
+</div>
+<br><br>

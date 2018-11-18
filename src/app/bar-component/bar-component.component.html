@@ -1,0 +1,103 @@
+<div class="jumbotron jumbotron-fluid">
+  <div class="container">
+    <h1 class="display-4">Welcome to the Bar Page. </h1>
+    <p class="lead"></p>
+</div>
+</div><br>
+
+<link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
+<script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+<br><br>
+
+<form #f="ngForm" (ngSubmit)="onSubmit()" novalidate="" action = "#">
+  <div class="form-row">
+    <div class="form-group col-md-6">
+      <input type="text" name="barname" [(ngModel)]="model.name" class="form-control" id="inputEmail4" placeholder="Bar Name">
+    </div>
+    <div class="form-group col-md-6">
+      <input type="text" name="barlic" [(ngModel)]="model.license" class="form-control" id="License" placeholder="License">
+    </div>
+  </div>
+  <div class="form-row">
+    <div class="form-group col-md-6">
+      <input type="text" name="baraddr" [(ngModel)]="model.addr" class="form-control" id="Address" placeholder="1234 Main St">
+    </div>
+    <div class="form-group col-md-6">
+      <input type="city"  name="barcity" [(ngModel)]="model.city" class="form-control" id="City" placeholder="City">
+    </div>
+  </div>
+  <div class="form-group">
+    <input type="text"  name="barphone" [(ngModel)]="model.phone" class="form-control" id="Phone" placeholder="Phone Number">
+  </div>
+
+  <div class="form-row align-items-center">
+    <div class="col-auto my-1">
+      <label class="mr-sm-2 sr-only" for="inlineFormCustomSelect">Preference</label>
+      <select class="custom-select mr-sm-2" id="inlineFormCustomSelect"  name="barotime" [(ngModel)]="model.OpenTime" >
+        <option selected>Open Time...</option>
+        <option value="6:00 PM">6:00 PM</option>
+        <option value="6:30 PM">6:30 PM</option>
+        <option value="7:00 PM">7:00 PM</option>
+      </select>
+    </div>
+    <div class="col-auto my-1">
+      <label class="mr-sm-2 sr-only" for="inlineFormCustomSelect">Preference</label>
+      <select class="custom-select mr-sm-2" id="inlineFormCustomSelect" name="barctime" [(ngModel)]="model.CloseTime" >
+        <option selected>Close Time...</option>
+        <option value="3:00 AM">3:00 AM</option>
+        <option value="3:30 AM">3:30 AM</option>
+        <option value="4:00 AM">4:00 AM</option>
+      </select>
+    </div>
+
+    <div class="col-auto my-1">
+    </div>
+  <button type="submit" class="btn btn-primary" onclick="location.reload();" >Submit</button>
+</div>
+</form>
+
+<br> <br>
+
+<div class="container">
+
+  <p-table [value]="bars">
+    <ng-template pTemplate="header">
+        <tr>
+          <th>Name</th>
+          <th>Licence</th>
+          <th>Address</th>
+          <th>City</th>
+          <th>Phone</th>
+          <th>Open Time</th>
+          <th>Close Time</th>
+          <th>Edit</th>
+          <th>Delete</th>
+        </tr>
+    </ng-template>
+    <ng-template pTemplate="body" let-bar>
+        <tr>
+          <td>
+            <a routerLink="/bars/{{ bar.name }}">
+              {{ bar.name }}
+            </a>
+          </td>
+          <td>{{ bar.license }}</td>
+          <td>{{ bar.addr }}</td>
+          <td>{{ bar.city }}</td>
+          <td>{{ bar.phone }}</td>
+          <td>{{ bar.OpenTime}}</td>
+          <td>{{ bar.CloseTime}}</td>
+          <td>
+            <p data-placement="top" data-toggle="tooltip" title="Edit">
+              <button class="btn btn-primary btn-xs" (click)="showForEdit(bar)"  >
+            <span class="glyphicon glyphicon-pencil"></span></button></p></td>
+          <td><p data-placement="top" data-toggle="tooltip" title="Delete">
+            <button class="btn btn-danger btn-xs"  (click)="showForDelete(bar.name)" onclick="location.reload();">
+              <span class="glyphicon glyphicon-trash"></span></button></p></td>
+        </tr>
+    </ng-template>
+  </p-table>
+</div>
+
+<br><br>
