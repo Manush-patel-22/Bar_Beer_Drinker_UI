@@ -1,5 +1,5 @@
-import { Component, OnInit } from '@angular/core';
-
+import { Component, OnInit, ViewChild } from '@angular/core';
+import { NgForm } from '@angular/forms';
 import { BeerService, Beer } from '../beer.service';
 
 @Component({
@@ -9,11 +9,34 @@ import { BeerService, Beer } from '../beer.service';
 })
 export class BeerComponentComponent implements OnInit {
 
+  model: any = {};
+  @ViewChild('f') beerFrom: NgForm;
+
   beers: Beer[];
+  beerName: string;
+  newBeer: Beer;
 
   constructor(private beerService: BeerService) { this.getBeer(); }
 
   ngOnInit() {
+  }
+
+  onSubmit(form: NgForm){
+    this.beerService.postBeer(this.model).subscribe(
+      data => {
+        console.log(data);
+        this.getBeer();
+      }
+    );
+  }
+
+  showForDelete(name: string){
+    if (confirm('Are you sure you want to delete this beer ?') == true){
+      this.beerService.delete_beer(name).subscribe(
+        data => {
+          this.beerService.getBeers();
+        })
+    } 
   }
 
   getBeer()

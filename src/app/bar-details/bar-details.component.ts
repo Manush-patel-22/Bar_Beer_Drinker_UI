@@ -18,9 +18,6 @@ export class BarDetailsComponent implements OnInit {
   topSpender: topSpender[];
   topManf: topManf[];
 
-  // beers: string[];
-  // counts: number[];
-
   constructor(
     private barService: BarsService,
     private route: ActivatedRoute

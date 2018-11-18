@@ -50,6 +50,14 @@ export class DrinkersService {
     return this.http.get<Drinker>('api/drinkers/' + drinker);
   }
 
+  postDrinker(model: any) {
+    return this.http.post<Drinker[]>('/api/post_drinker', model);
+  };
+
+  delete_drinker(drinker: string){
+    return this.http.delete<Drinker[]>('/api/delete_drinker/' + drinker);
+  }
+
   getTransaction(drinker: string){
     return this.http.get<drinkerData[]>('api/drinker_transaction/' + drinker);
   }

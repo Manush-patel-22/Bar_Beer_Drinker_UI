@@ -17,9 +17,6 @@ export class DrinkerDetailsComponent implements OnInit {
   drinkerDetails: Drinker[];
   drinkersData: drinkerData[];
   popularBeer: popularBeer[];
-  //distributionByWeek: distributionByWeek[];
-  //istributionByDates: distributionByDates[];
-
 
   constructor( 
     private drinkerService: DrinkersService,
@@ -70,8 +67,6 @@ export class DrinkerDetailsComponent implements OnInit {
 
       this.drinkerService.getSpendings(this.drinkerName).subscribe(
         data =>{
-          // this.distributionByWeek = data;
-
           const week = [];
           const counts = [];
 
@@ -95,8 +90,6 @@ export class DrinkerDetailsComponent implements OnInit {
 
       this.drinkerService.getDates(this.drinkerName).subscribe(
         data =>{
-          //this.distributionByDates = data;
-
           const date = [];
           const count = [];
 

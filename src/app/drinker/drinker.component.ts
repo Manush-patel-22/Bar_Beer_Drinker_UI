@@ -1,5 +1,6 @@
-import { Component, OnInit } from '@angular/core';
-import { Drinker, DrinkersService } from '../drinkers.service'
+import { Component, OnInit, ViewChild } from '@angular/core';
+import { Drinker, DrinkersService } from '../drinkers.service';
+import { NgForm } from '@angular/forms';
 
 @Component({
   selector: 'app-drinker',
@@ -9,6 +10,9 @@ import { Drinker, DrinkersService } from '../drinkers.service'
 export class DrinkerComponent implements OnInit {
 
   drinkers: Drinker[];
+  model: any = {};
+  @ViewChild('f') barfrom: NgForm;
+  drinker: Drinker[];
 
   constructor(public drinkersService: DrinkersService) { 
     this.getDrinkers();
@@ -16,6 +20,25 @@ export class DrinkerComponent implements OnInit {
 
   ngOnInit() {
     
+  }
+
+  onSubmit(form: NgForm) {
+    this.drinkersService.postDrinker(this.model).subscribe(
+      data => {
+        console.log(data);
+        this.getDrinkers();
+       
+      }
+    );
+  }
+
+  showForDelete(name: string){
+    if (confirm('Are you sure you want to delete this drinker ?') == true){
+      this.drinkersService.delete_drinker(name).subscribe(
+        data => {
+          this.drinkersService.getDrinkers();
+        });
+    }
   }
 
   getDrinkers(){
@@ -29,5 +52,4 @@ export class DrinkerComponent implements OnInit {
       }
     );
   }
-
 }

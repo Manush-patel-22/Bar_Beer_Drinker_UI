@@ -1,9 +1,28 @@
 <div class="jumbotron jumbotron-fluid">
     <div class="container">
-      <h1 class="display-4">Beer Page</h1>
+      <h1 class="display-4">This is our Beer Page</h1>
       <p class="lead">This is our Beer List</p>
     </div>
   </div>  
+<br>
+<link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
+<script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+
+<form #f="ngForm" (ngSubmit)="onSubmit()" novalidate="" action = "#">
+  <div class="form-row">
+    <div class="form-group col-md-7">
+      <input type="text" name="beername" [(ngModel)]="model.name" class="form-control" id="Name" placeholder="Beer Name">
+    </div>
+    <div class="form-group col-md-6">
+      <input type="text" name="beermanf" [(ngModel)]="model.manf" class="form-control" id="Manufacture" placeholder="Manufacturer">
+    </div>
+  </div>
+  <div class="form-group cold-md-6">
+      <button type="submit" class="btn btn-primary" onclick="location.reload();" >Submit</button>
+  </div>
+</form>
+<br>
 
 <div class="container">
   
@@ -12,6 +31,8 @@
         <tr>
           <th>Name</th>
           <th>Manufacturer</th>
+          <th>Edit</th>
+          <th>Delete</th>
         </tr>
       </ng-template>
       <ng-template pTemplate="body" let-beer>
@@ -22,8 +43,16 @@
               </a>
             </td>
             <td>{{ beer.manf }}</td>
+            <td>
+              <p data-placement="top" data-toggle="tooltip" title="Edit">
+                <button class="btn btn-primary btn-xs" (click)="showForEdit(beer)"  >
+              <span class="glyphicon glyphicon-pencil"></span></button></p></td>
+            <td><p data-placement="top" data-toggle="tooltip" title="Delete">
+            <button class="btn btn-danger btn-xs"  (click)="showForDelete(beer.name)" onclick="location.reload();">
+              <span class="glyphicon glyphicon-trash"></span></button></p></td>
           </tr>
       </ng-template>
     </p-table>
     
   </div>
+  <br>

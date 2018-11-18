@@ -1,17 +1,7 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { BarsService, Bar} from '../bars.service';
-import { ToastrService } from 'ngx-toastr';
-
-// interface BarData<MetaType = any> {
-//   name: string;
-//   addr: string;
-//   city: string;
-//   license: string;
-//   phone: string;
-//   OpenTime: string;
-//   CloseTime: string;
-// }
+import {ToastrService} from 'ngx-toastr';
 
 @Component({
   selector: 'app-bar-component',
@@ -43,7 +33,6 @@ export class BarComponentComponent implements OnInit {
       data => {
         console.log(data);
         this.getBars();
-        this.toastr.success('Bar Added Successfully', 'Bar Register');
       },
       error => {
         console.log("nah");

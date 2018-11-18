@@ -36,6 +36,14 @@ export class BeerService {
     return this.http.get<Beer[]>('/api/beers');
   }
 
+  postBeer(model: any) {
+    return this.http.post<Beer[]>('/api/post_beer', model);
+  }
+
+  delete_beer(beer: string){
+    return this.http.delete<Beer[]>('/api/delete_beer/' + beer);
+  }
+
   getBeer(beer: string)
   {
     return this.http.get<Beer>('api/beer/' + beer);
