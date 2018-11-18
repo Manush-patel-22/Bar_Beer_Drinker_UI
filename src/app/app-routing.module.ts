@@ -10,9 +10,15 @@ import { BeerDetailsComponent } from './beer-details/beer-details.component';
 
 const routes: Routes = [
   {
+    path: 'static',
+    pathMatch: 'full',
+    redirectTo: 'bars'
+  },
+  {
     path: '',
     pathMatch: 'full',
     component: WelcomeComponent
+   
   },
   {
     path: 'bars',
