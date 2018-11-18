@@ -5,6 +5,8 @@ import { BarDetailsComponent } from './bar-details/bar-details.component';
 import { BarComponentComponent } from './bar-component/bar-component.component';
 import { DrinkerComponent } from './drinker/drinker.component';
 import { DrinkerDetailsComponent } from './drinker-details/drinker-details.component';
+import { BeerComponentComponent } from './beer-component/beer-component.component';
+import { BeerDetailsComponent } from './beer-details/beer-details.component';
 
 const routes: Routes = [
   {
@@ -31,6 +33,16 @@ const routes: Routes = [
     path: 'drinkers/:drinker',
     pathMatch: 'full',
     component: DrinkerDetailsComponent
+  },
+  {
+    path: 'beers',
+    pathMatch: 'full',
+    component: BeerComponentComponent
+  },
+  {
+    path: 'beers/:beer',
+    pathMatch: 'full',
+    component: BeerDetailsComponent
   }
 ];
 

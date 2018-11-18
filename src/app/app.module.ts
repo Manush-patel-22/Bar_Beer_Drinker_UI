@@ -15,6 +15,8 @@ import { BarComponentComponent } from './bar-component/bar-component.component';
 import { DrinkerComponent } from './drinker/drinker.component';
 import { DrinkerDetailsComponent } from './drinker-details/drinker-details.component';
 import { ToastrModule } from 'ngx-toastr';
+import { BeerComponentComponent } from './beer-component/beer-component.component';
+import { BeerDetailsComponent } from './beer-details/beer-details.component';
 
 @NgModule({
   declarations: [
@@ -23,7 +25,9 @@ import { ToastrModule } from 'ngx-toastr';
     BarDetailsComponent,
     BarComponentComponent,
     DrinkerComponent,
-    DrinkerDetailsComponent
+    DrinkerDetailsComponent,
+    BeerComponentComponent,
+    BeerDetailsComponent
   ],
   imports: [
     FormsModule,
